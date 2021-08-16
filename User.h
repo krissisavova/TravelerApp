@@ -5,18 +5,13 @@
 class User {
 public:
 	User();
-	User(const User& other);
-	~User();
 
 	void registrationInput();
 	void loginInput();
+	void printInfo() const;
 
 private:
-	char* username;
-	char* password;
-	char* emailAddress;
-
-	void del();
-	void copy(const User&);
+	std::string username;
+	std::string password;
+	std::string emailAddress;
 };
-
