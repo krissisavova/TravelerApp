@@ -8,7 +8,10 @@ public:
 
 	void registrationInput();
 	void loginInput();
-	void printInfo() const;
+
+	std::string getUsername() const;
+	std::string getPassword() const;
+	std::string getEmailAddress() const;
 
 private:
 	std::string username;
