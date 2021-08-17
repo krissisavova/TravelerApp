@@ -13,6 +13,17 @@ User::User() {
 	emailAddress = "\0";
 }
 
+std::string User::getUsername() const {
+	return username;
+}
+
+std::string User::getPassword() const {
+	return password;
+}
+
+std::string User::getEmailAddress() const {
+	return emailAddress;
+}
 
 void User::registrationInput() {
 	cout << "Enter a username: ";
@@ -34,10 +45,4 @@ void User::loginInput() {
 
 	cout << "Enter your email address: ";
 	getline(cin, emailAddress);
-}
-
-void User::printInfo() const {
-	cout << endl;
-	cout << "Your name is " << username << endl;
-	cout << "Your email is " << emailAddress << endl;
 }
