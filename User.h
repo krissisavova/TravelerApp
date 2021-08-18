@@ -6,8 +6,8 @@ class User {
 public:
 	User();
 
-	void registrationInput();
-	void loginInput();
+	void registrationInput(std::fstream& file);
+	bool isLoggedIn();
 
 	std::string getUsername() const;
 	std::string getPassword() const;
