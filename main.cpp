@@ -15,6 +15,7 @@ void welcomeText() {
 
 	cout << "1. Sign up / Register " << endl;
 	cout << "2. Sign in / Login " << endl;
+	cout << "*. Press any other key to exit " << endl;
 }
 
 int main() {
@@ -51,7 +52,7 @@ int main() {
 		}
 	}
 	else  
-		cout << "Invalid option! Exiting..."; exit(1);
+		cout << "Bye! Hope to see you soon! :)"; exit(1);
 
 	mydb.close();
 
