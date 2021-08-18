@@ -55,6 +55,18 @@ void User::registrationInput(std::fstream& file) {
 		file << username << "\t" << password << "\t" << emailAddress << endl;
 
 		file.close();
+
+		std::ofstream userfile;
+		userfile.open(username + ".db");
+		if (!userfile) {
+			cout << "Failed to open file...\n";
+			exit(1);
+		}
+		else {
+			userfile << "Here are your comments about different destinations, " << username << ": \n\n";
+			userfile << "Destination:" << "\t" << "Time period:" << "\t" << "Stars(1-5):" << "\t" << "Comment: " << endl;
+			userfile.close();
+		}
 	}
 }
 
@@ -82,4 +94,3 @@ bool User::isLoggedIn() {
 	else 
 		return false;
 }
-
