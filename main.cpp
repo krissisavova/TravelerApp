@@ -1,6 +1,7 @@
 #include "User.h"
 #include <iostream>
 #include <fstream>
+#include <string>
 
 using std::cin;
 using std::cout;
@@ -16,12 +17,6 @@ void welcomeText() {
 	cout << "2. Sign in / Login " << endl;
 }
 
-void addToFile(std::fstream& out, User& u1) {
-	if (out.is_open()) {
-		out << u1.getUsername() << "\t" << u1.getPassword() << "\t" << u1.getEmailAddress() << endl;
-	}
-}
-
 int main() {
 
 	User u1, u2;
@@ -32,20 +27,31 @@ int main() {
 	cin >> option;	
 
 	system("cls");
-	cin.ignore(); // ignoring that enter the user presses when inserts the option number
+	cin.ignore(); // ignoring that "enter" the user presses when they insert the option number
 
 	std::fstream mydb;
-	mydb.open("users.db", std::ios::out); // write mode 
-	mydb << "Usernames:" << "\t" << "Passwords:" << "\t" << "Email Addresses:" << endl;
 
-	switch (option) {
-	case 1: 
-		u1.registrationInput(); 
-		addToFile(mydb, u1);
-		break;
-	case 2: u1.loginInput(); break;
-	default: cout << "Invalid option! Exiting..."; break;
+	if (option == 1) {
+		std::string un, pwd, ea;
+		u1.registrationInput(mydb);
+		system("cls");
+		main();
 	}
+	else if (option == 2) {
+		bool status = u1.isLoggedIn();
+		if (!status) {
+			cout << "Sorry, but we could not find such an account in our system.\n";
+			system("pause");
+			return 0;
+		}
+		else {
+			cout << "Hello, " << u1.getUsername() << "!\n";
+			system("pause");
+			return 1;
+		}
+	}
+	else  
+		cout << "Invalid option! Exiting..."; exit(1);
 
 	mydb.close();
 
